@@ -2,7 +2,7 @@ const loginButton = document.getElementById('loginButton');
 const emailInput = document.getElementById('emailInput');
 const senhaInput = document.getElementById('senhaInput');
 
-loginButton.addEventListener('click', function () {
+loginButton.addEventListener('click', () => {
   if (emailInput.value === 'tryber@teste.com' && senhaInput.value === '123456') {
     alert('Olá, Tryber!');
   } else {
