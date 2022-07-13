@@ -26,3 +26,10 @@ main {
   height: 500px;
 }
 
+#NomeSobrenome {
+  display: flex;
+}
+
+#EmailCasa {
+  display: flex;
+}
