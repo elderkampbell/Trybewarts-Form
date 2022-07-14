@@ -37,18 +37,25 @@ textArea.addEventListener('input', () => {
   p.innerText = 500 - textArea.value.length;
 });
 
-submitButton.addEventListener('click', () => {
+function replyName() {
   evaluationForm.innerHTML = '';
   evaluationForm.appendChild(form);
-  const nome = document.createElement('p');
-  nome.innerText = `Nome: ${inputName.value} ${inputLastname.value}`;
-  form.appendChild(nome);
+  const name = document.createElement('p');
+  name.innerText = `Nome: ${inputName.value} ${inputLastname.value}`;
+  form.appendChild(name);
+}
+
+function replyEmail() {
+  evaluationForm.innerHTML = '';
+  evaluationForm.appendChild(form);
   const email = document.createElement('p');
   email.innerText = `Email: ${inputEmail.value}`;
   form.appendChild(email);
-  const house = document.createElement('p');
-  house.innerText = `Casa: ${houseInput.value}`;
-  form.appendChild(house);
+}
+
+function replyFamily() {
+  evaluationForm.innerHTML = '';
+  evaluationForm.appendChild(form);
   for (let i = 0; i < familyInput.length; i += 1) {
     if (familyInput[i].checked) {
       const family = document.createElement('p');
@@ -56,9 +63,17 @@ submitButton.addEventListener('click', () => {
       form.appendChild(family);
     }
   }
-});
+}
 
-submitButton.addEventListener('click', () => {
+function replyHouse() {
+  evaluationForm.innerHTML = '';
+  evaluationForm.appendChild(form);
+  const house = document.createElement('p');
+  house.innerText = `Casa: ${houseInput.value}`;
+  form.appendChild(house);
+}
+
+function replySubject() {
   evaluationForm.innerHTML = '';
   evaluationForm.appendChild(form);
   const subject = document.createElement('p');
@@ -69,9 +84,9 @@ submitButton.addEventListener('click', () => {
     }
   }
   form.appendChild(subject);
-});
+}
 
-submitButton.addEventListener('click', () => {
+function replyAvaliation() {
   evaluationForm.innerHTML = '';
   evaluationForm.appendChild(form);
   for (let i = 0; i < rateInput.length; i += 1) {
@@ -81,4 +96,13 @@ submitButton.addEventListener('click', () => {
       form.appendChild(avaliation);
     }
   }
+}
+
+submitButton.addEventListener('click', () => {
+  replyName();
+  replyEmail();
+  replyFamily();
+  replyHouse();
+  replySubject();
+  replyAvaliation();
 });
