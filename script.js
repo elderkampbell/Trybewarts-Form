@@ -9,8 +9,12 @@ const inputName = document.getElementById('input-name');
 const inputLastname = document.getElementById('input-lastname');
 const inputEmail = document.getElementById('input-email');
 const houseInput = document.getElementById('house');
-const familyInput = document.getElementsByName('family');
+const familyInput = document.querySelectorAll('[name="family"]');
+const subjectInput = document.querySelectorAll('.subject');
+const rateInput = document.querySelectorAll('[name="rate"]');
 const evaluationForm = document.getElementById('evaluation-form');
+const form = document.createElement('form');
+form.setAttribute('id', 'form-data');
 
 loginButton.addEventListener('click', () => {
   if (emailInput.value === 'tryber@teste.com' && senhaInput.value === '123456') {
@@ -35,8 +39,6 @@ textArea.addEventListener('input', () => {
 
 submitButton.addEventListener('click', () => {
   evaluationForm.innerHTML = '';
-  const form = document.createElement('form');
-  form.setAttribute('id', 'form-data');
   evaluationForm.appendChild(form);
   const nome = document.createElement('p');
   nome.innerText = `Nome: ${inputName.value} ${inputLastname.value}`;
@@ -47,7 +49,36 @@ submitButton.addEventListener('click', () => {
   const house = document.createElement('p');
   house.innerText = `Casa: ${houseInput.value}`;
   form.appendChild(house);
-  const family = document.createElement('p');
-  family.innerText = `Família: ${familyInput.value}`;
-  form.appendChild(family);
+  for (let i = 0; i < familyInput.length; i += 1) {
+    if (familyInput[i].checked) {
+      const family = document.createElement('p');
+      family.innerText = `Família: ${familyInput[i].value}`;
+      form.appendChild(family);
+    }
+  }
+});
+
+submitButton.addEventListener('click', () => {
+  evaluationForm.innerHTML = '';
+  evaluationForm.appendChild(form);
+  const subject = document.createElement('p');
+  subject.innerText = 'Matérias: ';
+  for (let i = 0; i < subjectInput.length; i += 1) {
+    if (subjectInput[i].checked) {
+      subject.innerText += `${subjectInput[i].value}, `;
+    }
+  }
+  form.appendChild(subject);
+});
+
+submitButton.addEventListener('click', () => {
+  evaluationForm.innerHTML = '';
+  evaluationForm.appendChild(form);
+  for (let i = 0; i < rateInput.length; i += 1) {
+    if (rateInput[i].checked) {
+      const avaliation = document.createElement('p');
+      avaliation.innerText = `Avaliação: ${rateInput[i].value}`;
+      form.appendChild(avaliation);
+    }
+  }
 });
