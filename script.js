@@ -12,6 +12,7 @@ const houseInput = document.getElementById('house');
 const familyInput = document.querySelectorAll('[name="family"]');
 const subjectInput = document.querySelectorAll('.subject');
 const rateInput = document.querySelectorAll('[name="rate"]');
+const textAreaInput = document.getElementById('textarea');
 const evaluationForm = document.getElementById('evaluation-form');
 const form = document.createElement('form');
 form.setAttribute('id', 'form-data');
@@ -98,6 +99,14 @@ function replyAvaliation() {
   }
 }
 
+function replyComment() {
+  evaluationForm.innerHTML = '';
+  evaluationForm.appendChild(form);
+  const comment = document.createElement('p');
+  comment.innerText = `Observações: ${textAreaInput.value}`;
+  form.appendChild(comment);
+}
+
 submitButton.addEventListener('click', () => {
   replyName();
   replyEmail();
@@ -105,4 +114,5 @@ submitButton.addEventListener('click', () => {
   replyHouse();
   replySubject();
   replyAvaliation();
+  replyComment();
 });
