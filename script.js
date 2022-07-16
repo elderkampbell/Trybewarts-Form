@@ -15,7 +15,8 @@ const rateInput = document.querySelectorAll('[name="rate"]');
 const textAreaInput = document.getElementById('textarea');
 const evaluationForm = document.getElementById('evaluation-form');
 const form = document.createElement('form');
-form.setAttribute('id', 'form-data');
+form.id = 'form-data';
+const main = document.getElementById('main');
 
 loginButton.addEventListener('click', () => {
   if (emailInput.value === 'tryber@teste.com' && senhaInput.value === '123456') {
@@ -39,24 +40,18 @@ textArea.addEventListener('input', () => {
 });
 
 function replyName() {
-  evaluationForm.innerHTML = '';
-  evaluationForm.appendChild(form);
   const name = document.createElement('p');
   name.innerText = `Nome: ${inputName.value} ${inputLastname.value}`;
   form.appendChild(name);
 }
 
 function replyEmail() {
-  evaluationForm.innerHTML = '';
-  evaluationForm.appendChild(form);
   const email = document.createElement('p');
   email.innerText = `Email: ${inputEmail.value}`;
   form.appendChild(email);
 }
 
 function replyFamily() {
-  evaluationForm.innerHTML = '';
-  evaluationForm.appendChild(form);
   for (let i = 0; i < familyInput.length; i += 1) {
     if (familyInput[i].checked) {
       const family = document.createElement('p');
@@ -67,16 +62,12 @@ function replyFamily() {
 }
 
 function replyHouse() {
-  evaluationForm.innerHTML = '';
-  evaluationForm.appendChild(form);
   const house = document.createElement('p');
   house.innerText = `Casa: ${houseInput.value}`;
   form.appendChild(house);
 }
 
 function replySubject() {
-  evaluationForm.innerHTML = '';
-  evaluationForm.appendChild(form);
   const subject = document.createElement('p');
   subject.innerText = 'Matérias: ';
   for (let i = 0; i < subjectInput.length; i += 1) {
@@ -88,8 +79,6 @@ function replySubject() {
 }
 
 function replyAvaliation() {
-  evaluationForm.innerHTML = '';
-  evaluationForm.appendChild(form);
   for (let i = 0; i < rateInput.length; i += 1) {
     if (rateInput[i].checked) {
       const avaliation = document.createElement('p');
@@ -100,14 +89,15 @@ function replyAvaliation() {
 }
 
 function replyComment() {
-  evaluationForm.innerHTML = '';
-  evaluationForm.appendChild(form);
   const comment = document.createElement('p');
   comment.innerText = `Observações: ${textAreaInput.value}`;
   form.appendChild(comment);
 }
 
 submitButton.addEventListener('click', () => {
+  evaluationForm.innerHTML = '';
+  evaluationForm.style.visibility = 'hidden';
+  main.appendChild(form);
   replyName();
   replyEmail();
   replyFamily();
